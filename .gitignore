@@ -1,0 +1,9 @@
+.venv/
+.vscode/
+__pycache__/
+*.o
+exercises/tcp_benchmark/server
+exercises/tcp_benchmark/client
+exercises/tcp_benchmark/results.txt
+exercises/tcp_benchmark/server.log
+*.pdf
