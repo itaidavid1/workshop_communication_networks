@@ -10,6 +10,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+/* Handle a single client connection: receive benchmark requests and data. */
 static int handle_client(int client_fd) {
     unsigned char *buffer = malloc(MAX_MESSAGE_SIZE);
     if (buffer == NULL) {
@@ -66,6 +67,7 @@ int main(int argc, char **argv) {
         port = (uint16_t)parsed;
     }
 
+    /* Create a listening socket and accept clients in a loop. */
     int listen_fd = create_listening_socket(port);
     if (listen_fd < 0) {
         return EXIT_FAILURE;

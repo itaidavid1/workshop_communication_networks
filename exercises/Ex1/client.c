@@ -8,6 +8,7 @@
 #include <string.h>
 #include <unistd.h>
 
+/* Perform one benchmark round: send header, all messages, wait for ack, and measure time. */
 static int run_single_round(int socket_fd,
                             const unsigned char *payload,
                             size_t message_size,
@@ -38,6 +39,7 @@ static int run_single_round(int socket_fd,
     return 0;
 }
 
+/* Convert bytes/sec to MiB/s. */
 static double bytes_per_second_to_mib_per_second(uint64_t total_bytes, double elapsed_seconds) {
     if (elapsed_seconds <= 0.0) {
         return 0.0;
@@ -46,6 +48,7 @@ static double bytes_per_second_to_mib_per_second(uint64_t total_bytes, double el
 }
 
 int main(int argc, char **argv) {
+    /* Client: connect to server, iterate message sizes, perform warm-up and measured rounds, print best throughput per size. */
     if (argc < 2 || argc > 3) {
         print_usage_client(argv[0]);
         return EXIT_FAILURE;
