@@ -1,7 +1,7 @@
 Commands:
   - On Server : mlx-stud-01
         """
-          cd ~/tcp_benchmark
+          cd ~/tcp_benchmark \n
           make clean && make
           ./server
         """
