@@ -22,6 +22,8 @@ For each message size, the client runs several rounds over the same connection:
 - 3 warm-up rounds to stabilize TCP state, buffering, and scheduler effects
 - 5 measured rounds
 
+The full rationale for these choices is documented in `common.h` next to the `WARMUP_ROUNDS` and `MEASURE_ROUNDS` defines.
+
 The client reports the best measured throughput among the 5 measured rounds. That matches the goal of estimating the highest sustainable transmission rate for each message size.
 
 The benchmark count is chosen so that each message size transfers a practical amount of data while keeping runtime reasonable. Small messages are capped so they do not run for too long, and large messages still transfer enough data to obtain a stable result.
@@ -59,24 +61,24 @@ Fill this section after running the benchmark on the course hardware.
 
 | Message size | Throughput | Unit |
 | --- | --- | --- |
-| 1 B | 1.428 | MiB/s |
-| 2 B | 2.818 | MiB/s |
-| 4 B | 5.624 | MiB/s |
-| 8 B | 11.004 | MiB/s |
-| 16 B | 21.980 | MiB/s |
-| 32 B | 34.056 | MiB/s |
-| 64 B | 35.568 | MiB/s |
-| 128 B | 35.757 | MiB/s |
-| 256 B | 36.024 | MiB/s |
-| 512 B | 35.520 | MiB/s |
-| 1 KiB | 35.814 | MiB/s |
-| 2 KiB | 35.648 | MiB/s |
-| 4 KiB | 36.432 | MiB/s |
-| 8 KiB | 36.239 | MiB/s |
-| 16 KiB | 36.371 | MiB/s |
-| 32 KiB | 34.958 | MiB/s |
-| 64 KiB | 37.179 | MiB/s |
-| 128 KiB | 37.558 | MiB/s |
-| 256 KiB | 37.507 | MiB/s |
-| 512 KiB | 37.712 | MiB/s |
-| 1 MiB | 48.206 | MiB/s |
+| 1 B | 1.614 | MiB/s |
+| 2 B | 3.342 | MiB/s |
+| 4 B | 6.656 | MiB/s |
+| 8 B | 13.272 | MiB/s |
+| 16 B | 26.656 | MiB/s |
+| 32 B | 52.833 | MiB/s |
+| 64 B | 94.479 | MiB/s |
+| 128 B | 111.651 | MiB/s |
+| 256 B | 111.739 | MiB/s |
+| 512 B | 111.938 | MiB/s |
+| 1 KiB | 111.872 | MiB/s |
+| 2 KiB | 111.895 | MiB/s |
+| 4 KiB | 111.975 | MiB/s |
+| 8 KiB | 111.921 | MiB/s |
+| 16 KiB | 111.911 | MiB/s |
+| 32 KiB | 111.890 | MiB/s |
+| 64 KiB | 111.835 | MiB/s |
+| 128 KiB | 111.747 | MiB/s |
+| 256 KiB | 111.923 | MiB/s |
+| 512 KiB | 111.934 | MiB/s |
+| 1 MiB | 112.040 | MiB/s |

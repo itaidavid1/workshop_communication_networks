@@ -8,9 +8,13 @@
 #define DEFAULT_PORT 45678
 #define MAX_MESSAGE_SIZE (1024 * 1024)
 #define MIN_MESSAGE_SIZE 1
-/* 3 warm-up rounds: enough for TCP's congestion window and socket buffers to
- * reach steady state before measurement begins. 5 measured rounds give a
- * stable peak sample without making the benchmark unreasonably slow. */
+/* Warm-up rounds (3): the first few rounds are discarded because TCP needs
+ * time to ramp up its congestion window (slow start) and the OS socket buffers
+ * need to fill before the link is fully utilized. Without warm-up, the first
+ * measured round would report artificially low throughput.
+ * Measured rounds (5): taking the best of 5 rounds filters out transient
+ * interference from other processes or network jitter, while keeping the total
+ * benchmark runtime reasonable. */
 #define WARMUP_ROUNDS 3
 #define MEASURE_ROUNDS 5
 
